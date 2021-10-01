@@ -3,8 +3,7 @@ import numpy as np
 import pandas as pd
 import random
 from time import sleep
-from dotenv import dotenv_values
-
+import os
 
 # env_info = dotenv_values("../.env")
 # API_ID = env_info['API_ID']
@@ -25,7 +24,7 @@ class rakuten_api:
 
         REQUEST_URL = "https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426"
         env_info = dotenv_values(".env") # .envはmain.pyと同じ階層に置くため，main.pyから見た.envの位置であることに注意
-        API_ID = env_info['API_ID']
+        API_ID = os.environ["API_ID"]
 
         api_result = [] # json結果を入れるためのリスト
 
