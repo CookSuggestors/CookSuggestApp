@@ -5,13 +5,6 @@ import random
 from time import sleep
 from dotenv import dotenv_values
 
-
-# env_info = dotenv_values("../.env")
-# API_ID = env_info['API_ID']
-# print(env_info)
-# print(API_ID)
-# print(type(API_ID))
-
 class rakuten_api:
 
     # 楽天APIを呼び出し，入力食材のマッチ数の多い順にソートする
@@ -63,10 +56,5 @@ class rakuten_api:
         result = []
         for i in range(recipe_num): 
             result.append(sorted_api_result[i])
-            # pprint('料理画像：' + sorted_api_result[i]['foodImageUrl'])
-            # pprint('必要な食材リスト：' + str(sorted_api_result[i]['recipeMaterial']))
-            # pprint('マッチしなかった食材リスト：' + str(sorted_api_result[i]['notMatchRecipeMaterial']))
-            # pprint('料理値段：' + sorted_api_result[i]['recipeCost'])
-            # pprint('料理時間：' + sorted_api_result[i]['recipeIndication'])
-            # pprint('レシピURL：' + sorted_api_result[i]['recipeUrl'])
+            
         return result
