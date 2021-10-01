@@ -1,4 +1,5 @@
 from os import error
+import os
 from flask import Flask, jsonify, request
 import api.rakuten_api as API
 
