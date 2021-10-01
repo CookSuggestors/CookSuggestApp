@@ -18,7 +18,7 @@ class rakuten_api:
 
         REQUEST_URL = "https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426"
         env_info = dotenv_values(".env") # .envはmain.pyと同じ階層に置くため，main.pyから見た.envの位置であることに注意
-        API_ID = env_info['API_ID']
+        API_ID = env_info['API_ID'] # 楽天IDは環境変数から取得
 
         api_result = [] # json結果を入れるためのリスト
 
@@ -29,7 +29,7 @@ class rakuten_api:
             "format" : "json",
             "applicationId" : API_ID,
             "formatVersion" : 2,
-            "elements" : "recipeTitle,recipeMaterial,recipeCost,foodImageUrl",
+            "elements" : "recipeTitle,recipeMaterial,recipeCost,foodImageUrl,recipeUrl", # レシピタイトル，食材，費用，画像URL，レシピURL
             "categoryId" : categoryId # レシピのカテゴリID
             }
             response = requests.get(REQUEST_URL, serch_params) # レスポンス結果
@@ -56,5 +56,5 @@ class rakuten_api:
         result = []
         for i in range(recipe_num): 
             result.append(sorted_api_result[i])
-            
+
         return result
