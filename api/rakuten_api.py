@@ -35,7 +35,6 @@ class rakuten_api:
             }
             response = requests.get(REQUEST_URL, serch_params) # レスポンス結果
             result = response.json() # レスポンス結果をjson形式で表示
-            print(result)
             api_result.extend(result['result']) 
             sleep(1) # APIへの連続したリクエストを防止するため．1秒は最低必要．
 
