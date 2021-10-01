@@ -46,7 +46,7 @@ class rakuten_api:
             not_matched_syokuzai_list = set(input_food_list) ^ set(api_result[idx]['recipeMaterial']) # マッチしなかった食材名リスト
             match_num = len(matched_syokuzai_list)  # マッチした食材数
             api_result[idx]['matchNum'] = match_num # jsonファイルに'マッチ数'の要素を追加
-            api_result[idx]['notMatchRecipeMaterial'] = not_matched_syokuzai_list # jsonファイルに'マッチしなかった食材名リスト'の要素を追加
+            api_result[idx]['notMatchRecipeMaterial'] = list(not_matched_syokuzai_list) # jsonファイルに'マッチしなかった食材名リスト'の要素を追加
 
         sorted_api_result = sorted(api_result, key=lambda x: x['matchNum'], reverse=True) # マッチ数が多い順に表示する
 
