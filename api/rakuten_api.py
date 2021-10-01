@@ -1,11 +1,16 @@
 import requests
 import numpy as np
 import pandas as pd
-import json
-from pprint import pprint
 import random
 from time import sleep
+from dotenv import dotenv_values
 
+
+# env_info = dotenv_values("../.env")
+# API_ID = env_info['API_ID']
+# print(env_info)
+# print(API_ID)
+# print(type(API_ID))
 
 class rakuten_api:
 
@@ -19,7 +24,8 @@ class rakuten_api:
         target_categoryId_list = random.sample(categoryId_list, 3) # レシピのカテゴリIDリストからランダムにカテゴリを抽出
 
         REQUEST_URL = "https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426"
-        APP_ID="1033292785331853381"
+        env_info = dotenv_values(".env") # .envはmain.pyと同じ階層に置くため，main.pyから見た.envの位置であることに注意
+        API_ID = env_info['API_ID']
 
         api_result = [] # json結果を入れるためのリスト
 
@@ -28,7 +34,7 @@ class rakuten_api:
             
             serch_params = {
             "format" : "json",
-            "applicationId" : APP_ID,
+            "applicationId" : API_ID,
             "formatVersion" : 2,
             "elements" : "recipeTitle,recipeMaterial,recipeCost,foodImageUrl",
             "categoryId" : categoryId # レシピのカテゴリID
