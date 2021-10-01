@@ -1,7 +1,7 @@
+import os
 from os import error
 from flask import Flask, jsonify, request
 import api.rakuten_api as API
-
 app = Flask(__name__)
 
 # @app.route('/')
