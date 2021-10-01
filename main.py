@@ -1,4 +1,5 @@
 from os import error
+import os
 from flask import Flask, jsonify, request
 import api.rakuten_api as API
 
@@ -21,5 +22,7 @@ def get_user():
     return jsonify(recipe_list)
 
 
+# ポート番号の設定
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=8880, debug=True)
+    port = int(os.getenv("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
