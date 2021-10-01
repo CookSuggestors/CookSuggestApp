@@ -20,6 +20,10 @@ def get_user():
     # return json.dumps(recipe_list, default=str)
     return jsonify(recipe_list)
 
+@app.route('/ping', methods=["GET"])
+def index():
+    return "ok"
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)
