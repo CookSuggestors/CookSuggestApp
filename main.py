@@ -1,7 +1,7 @@
+import os
 from os import error
 from flask import Flask, jsonify, request
 import api.rakuten_api as API
-
 app = Flask(__name__)
 
 # @app.route('/')
@@ -20,6 +20,11 @@ def get_user():
     # return json.dumps(recipe_list, default=str)
     return jsonify(recipe_list)
 
+@app.route('/ping', methods=["GET"])
+def index():
+    return "ok"
+
 
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=8880, debug=True)
+    port = int(os.getenv("PORT", 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
