@@ -1,3 +1,4 @@
+from os import error
 from flask import Flask, jsonify, request
 import api.rakuten_api as API
 
@@ -16,6 +17,7 @@ def get_user():
     sorted_api_result = Rakuten_api.call_api(input_food_list=input_food_list) # 楽天APIを呼び出し，食材のマッチ数が多い順にソートされたjsonデータを取得する
     recipe_list = Rakuten_api.output_recipe(recipe_num=3, sorted_api_result=sorted_api_result) # レシピの出力
     
+    # return json.dumps(recipe_list, default=str)
     return jsonify(recipe_list)
 
 
